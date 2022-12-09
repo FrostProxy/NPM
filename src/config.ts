@@ -10,6 +10,7 @@ if (!process.env.AUTHORIZATION) {
 // Define the configuration object
 const config = {
   ip: "api.frostproxy.com",
+  port: process.env.PORT || 3000,
   authorization: process.env.AUTHORIZATION || '',
 };
 
