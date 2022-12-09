@@ -8,14 +8,23 @@ if (!process.env.AUTHORIZATION) {
 }
 
 // Define the configuration object
-const config = {
-  ip: "api.frostproxy.com",
-  port: process.env.PORT || 3000,
-  authorization: process.env.AUTHORIZATION || '',
-};
+interface Config {
+  ip: string;
+  port: string | number;
+  authorization: string;
+  set(values: any): void;
+}
 
-config.set = (values: any) => {
-  Object.assign(config, values);
+// Define the configuration object
+const config: Config = {
+  ip: process.env.IP || 'api.frostproxy.com',
+  port: process.env.PORT || 3434,
+  authorization: process.env.AUTHORIZATION,
+
+  // Define the set() method
+  set: (values: any) => {
+    Object.assign(config, values);
+  }
 };
 
 export { config };
